@@ -1,8 +1,9 @@
-let accounts = require('./accounts');
+const connectDb = require('./database');
+
 const express = require('express');
 const app = express();
 const accountsRoutes = require('./api/accounts/accounts.routes');
-
+connectDb();
 app.use(express.json());
 app.use('/accounts', accountsRoutes);
 
