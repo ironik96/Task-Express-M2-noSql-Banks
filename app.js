@@ -1,11 +1,14 @@
-let accounts = require('./accounts');
-const express = require('express');
+let accounts = require("./accounts");
+const express = require("express");
+const connectDB = require("./database");
+const accountsRoutes = require("./api/accounts/accounts.routes");
+
+connectDB();
 const app = express();
-const accountsRoutes = require('./api/accounts/accounts.routes');
 
 app.use(express.json());
-app.use('/accounts', accountsRoutes);
+app.use("/api/accounts", accountsRoutes);
 
 app.listen(8000, () => {
-  console.log('The application is running on localhost:8000');
+  console.log("The application is running on localhost:8000");
 });
